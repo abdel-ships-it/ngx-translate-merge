@@ -1,0 +1,30 @@
+{
+  "name": "ngx-translate-tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon bin/index.js",
+    "debug": "NODE_ENV=development nodemon --inspect-brk bin/index.js",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node-fetch": "^2.1.3",
+    "asfs": "^2.0.3",
+    "async-file": "^2.0.2",
+    "dotenv": "^6.2.0",
+    "lodash.difference": "^4.5.0",
+    "node-fetch": "^2.3.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.6"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.6"
+  },
+  "bin": {
+    "ngx-translate-tool": "./bin/index.js"
+  }
+}
