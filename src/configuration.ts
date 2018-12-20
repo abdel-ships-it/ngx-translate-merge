@@ -28,9 +28,8 @@ export class Configuration {
             if ( flags.isSet('overwrite') ) {
                 configuration.autoFix = flags.get('overwrite');
             }
-            if ( flags.isSet('fileType') ) {
-                configuration.fileType = flags.get('fileType');
-            }
+            
+            configuration.fileType = flags.get('fileType');
             return configuration;
         } else {
             console.error('Error loading configuration');
