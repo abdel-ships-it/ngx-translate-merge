@@ -1,6 +1,6 @@
 {
   "name": "ngx-translate-merge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,12 +9,12 @@
     "build": "tsc"
   },
   "author": {
-      "email": "abdelelmedny@gmail.com",
-      "name": "Abdel El-medny",
-      "url": "https://abdelelmedny.firebaseapp.com/"
+    "email": "abdelelmedny@gmail.com",
+    "name": "Abdel El-medny",
+    "url": "https://abdelelmedny.firebaseapp.com/"
   },
   "repository": {
-      "url": "https://github.com/realappie/ngx-translate-merge.git"
+    "url": "https://github.com/realappie/ngx-translate-merge.git"
   },
   "license": "ISC",
   "dependencies": {
