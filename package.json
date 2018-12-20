@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=development nodemon bin/index.js",
     "debug": "NODE_ENV=development nodemon --inspect-brk bin/index.js",
-    "build": "tsc"
+    "build": "tsc --sourceMap false"
   },
   "author": {
     "email": "abdelelmedny@gmail.com",
