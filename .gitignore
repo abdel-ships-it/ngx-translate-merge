@@ -3,3 +3,5 @@ bin/*
 .vscode/*
 !.vscode/tasks.json
 !.vscode/launch.json
+i18n/*
+.env
