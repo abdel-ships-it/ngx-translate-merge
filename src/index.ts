@@ -1,34 +1,59 @@
 #! /usr/bin/env node
-
-import { IConfiguration } from "./types";
-import { File } from "./file";
-import * as http from 'http';
+import * as ora from "ora";
 import { Analyzer } from "./analyzer";
+import { FilesManager } from "./files-manager";
+import { TranslationReader } from "./translation-reader";
+import { Configuration } from "./configuration";
+import { TranslationsDifferenceHandler } from "./translation-difference-handler";
+import { TranslationWriter } from "./translation-writer";
 
 if (process.env.NODE_ENV === 'development') {
     require('dotenv').load();
 }
 
 export class Main {
-    public files = new File();
+    public filesManager = new FilesManager();
+
+    public translationReader = new TranslationReader();
 
     public analyzer = new Analyzer();
 
-    public configuration!: IConfiguration;
+    public configuration = new Configuration(this.filesManager);
+
+    public translationsDifferenceHandler = new TranslationsDifferenceHandler();
+
+    public translationWriter = new TranslationWriter(this.filesManager);
 
     constructor() {
         this.init();
     }
 
     async init() {
-        this.configuration = await this.files.loadConfiguration();
+        const spinner = ora().start();
 
-        const translationsMap = await this.files.getTranslationFilesValues(this.configuration.i18nFilesPath);
+        spinner.text = 'Analyzing differences...';
+            
+        const configuration = await this.configuration.getConfiguration();
 
-        console.log(translationsMap);
+        const translationFiles = await this.filesManager.getTranslationFiles(configuration!.i18nFilesPath, configuration!.fileType);
 
-        this.analyzer.getDifferences(this.configuration.masterFileName, translationsMap);
-        
+        const translationsMap = await this.translationReader.parse(translationFiles, configuration!.fileType);
+
+        const differences = this.analyzer.getDifferences(configuration!.masterFileName, translationsMap!);
+
+        this.analyzer.logDifferences(differences, configuration!.autoFix);
+
+        if (  configuration!.autoFix ) {
+            const fixedFilesMap = this.translationsDifferenceHandler.handle(translationsMap!, differences);
+
+            this.translationWriter.write(
+                fixedFilesMap,
+                configuration!,
+                'json'
+            );
+        }
+
+        spinner.stop();
     }
 }
 
