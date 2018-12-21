@@ -12,17 +12,17 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export class Main {
-    public filesManager = new FilesManager();
+    filesManager = new FilesManager();
 
-    public translationReader = new TranslationReader();
+    translationReader = new TranslationReader();
 
-    public analyzer = new Analyzer();
+    analyzer = new Analyzer();
 
-    public configuration = new Configuration(this.filesManager);
+    configuration = new Configuration(this.filesManager);
 
-    public translationsDifferenceHandler = new TranslationsDifferenceHandler();
+    translationsDifferenceHandler = new TranslationsDifferenceHandler();
 
-    public translationWriter = new TranslationWriter(this.filesManager);
+    translationWriter = new TranslationWriter(this.filesManager);
 
     constructor() {
         this.init();
@@ -57,4 +57,5 @@ export class Main {
     }
 }
 
+// tslint:disable-next-line:no-unused-expression
 new Main();
