@@ -4,13 +4,13 @@ import { ITranslationDifference, ITranslationFile } from '../types';
 export class Analyzer {
 
     /** Gets the differences between all the translation files and the master file */
-    public getDifferences(masterFileName: string, translations: Map<string, any>): Map<string, ITranslationDifference> {
+    getDifferences(masterFileName: string, translations: Map<string, any>): Map<string, ITranslationDifference> {
         const masterFileValue = translations.get(masterFileName);
 
         const differences: Map<string, ITranslationDifference> = new Map();
 
         translations.forEach((fileValue, fileKey) => {
-            if (fileKey != masterFileName) {
+            if (fileKey !== masterFileName) {
                 const difference = this.getDifference(
                     Object.keys(masterFileValue!),
                     Object.keys(fileValue),
@@ -23,12 +23,12 @@ export class Analyzer {
         return differences;
     }
 
-    public logDifferences(
+    logDifferences(
         differences: Map<string, ITranslationDifference>,
         fixFlagOn: boolean
     ) {
 
-        let message: string[] = [];
+        const message: string[] = [];
 
         /** We want to be positive here! So we will show the good news first */
         const positivelySortedDifferences = Array.from(differences.entries()).sort((a, b) => {
@@ -58,8 +58,8 @@ export class Analyzer {
                 ].join('');
             }
 
-            if ( redundantLength == 0 && missingLength == 0 ) {
-                toAppendMessage = `🎉 '${fileKey}' matches the master file` 
+            if ( redundantLength === 0 && missingLength === 0 ) {
+                toAppendMessage = `🎉 '${fileKey}' matches the master file`; 
             }
 
             message.push(toAppendMessage);
@@ -79,7 +79,7 @@ export class Analyzer {
         const difference: ITranslationDifference = {
             missing: [],
             redundant: []
-        }
+        };
 
         const masterSet = new Set(masterKeys);
 

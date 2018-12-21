@@ -12,7 +12,7 @@ export class Configuration {
         
       }
 
-    public async getConfiguration() {
+    async getConfiguration() {
         if ( await this.filesManager.pathExists(this.configPath) ) {
             const configuration = await this.filesManager.loadConfiguration(this.configPath);
 
