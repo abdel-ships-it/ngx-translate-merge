@@ -1,4 +1,4 @@
-## ngx translate merge
+## ngx translate merge [![Build Status](https://travis-ci.com/realappie/ngx-translate-merge.svg?branch=master)](https://travis-ci.com/realappie/ngx-translate-merge)
 
 This CLI tool will merge your translation files based on one master file,
 
