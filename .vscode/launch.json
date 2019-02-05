@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            "type": "node2",
             "request": "attach",
             "name": "Node: Nodemon-attach",
             "protocol": "inspector",
