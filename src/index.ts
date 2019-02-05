@@ -41,8 +41,10 @@ export class Main {
 
         const differences = this.analyzer.getDifferences(configuration!.masterFileName, translationsMap!);
 
-        this.analyzer.logDifferences(differences, configuration!.autoFix);
+        const messages = this.analyzer.createFeedback(differences)!;
 
+        this.analyzer.handleFeedback(messages, configuration!);
+        
         if (  configuration!.autoFix ) {
             const fixedFilesMap = this.translationsDifferenceHandler.handle(
                 translationsMap!,
@@ -54,6 +56,11 @@ export class Main {
                 fixedFilesMap,
                 configuration!,
                 'json'
+            );
+
+            this.filesManager.writeFile(
+                configuration!.i18nFilesPath + '/fixed/summary.txt', 
+                messages.join('\n') 
             );
         }
 
