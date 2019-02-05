@@ -9,7 +9,7 @@ This CLI tool will merge your translation files based on one master file,
 ngx-translate-merge
 ```
 
-You will need a `i18n-config.json` in the root directory that looks a bit like this
+You will need a `ngx-translate-merge.json` in the root directory that looks a bit like this
 
 ```json
 {
