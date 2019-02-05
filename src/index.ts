@@ -44,7 +44,11 @@ export class Main {
         this.analyzer.logDifferences(differences, configuration!.autoFix);
 
         if (  configuration!.autoFix ) {
-            const fixedFilesMap = this.translationsDifferenceHandler.handle(translationsMap!, differences);
+            const fixedFilesMap = this.translationsDifferenceHandler.handle(
+                translationsMap!,
+                differences,
+                configuration!.masterFileName
+            );
 
             this.translationWriter.write(
                 fixedFilesMap,
