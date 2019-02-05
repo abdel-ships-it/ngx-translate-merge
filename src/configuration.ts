@@ -6,7 +6,7 @@ import { FilesManager } from "./files-manager";
  * It will also check if the autofix flag was passed or not
  */
 export class Configuration {
-    private readonly configPath: string = process.cwd() + '/i18n-config.json';
+    private readonly configPath: string = process.cwd() + '/ngx-translate-merge.json';
 
     constructor(private filesManager: FilesManager) {
         
