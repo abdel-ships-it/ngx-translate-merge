@@ -45,11 +45,11 @@ export class Main {
 
         this.analyzer.handleFeedback(messages, configuration!);
         
-        if (  configuration!.autoFix ) {
+        if (  configuration!.addMissing || configuration!.removeRedundant ) {
             const fixedFilesMap = this.translationsDifferenceHandler.handle(
                 translationsMap!,
                 differences,
-                configuration!.masterFileName
+                configuration!
             );
 
             this.translationWriter.write(

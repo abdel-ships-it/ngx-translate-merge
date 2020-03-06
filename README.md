@@ -15,8 +15,9 @@ You will need a `ngx-translate-merge.json` in the root directory that looks a bi
 {
     "i18nFilesPath": "i18n",
     "masterFileName": "en.json",
-    "autoFix": true,
-    "overwrite": false
+    "addMissing": true,
+    "overwrite": false,
+    "removeRedundant": false
 }
 ```
 
@@ -26,7 +27,9 @@ Flags
 Usage: node ngx-translate-tool [options]
 
 Options:
-  --[no]autofix: Auto fixes translation files
+  --[no]addMissing: Adds missing translation keys
+    (default: false)
+  --[no]removeRedundant: Removes redundant translation keys
     (default: false)
   --[no]overwrite: Whether to overrwrite original files or not
     (default: false)

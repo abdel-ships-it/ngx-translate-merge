@@ -1,6 +1,6 @@
 {
     "i18nFilesPath": "i18n",
     "masterFileName": "en.json",
-    "autoFix": true,
+    "addMissing": true,
     "overwrite": false
 }

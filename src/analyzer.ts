@@ -68,8 +68,8 @@ export class Analyzer {
     handleFeedback(messages: string[], config: IConfiguration) {
         console.log(messages.join('\n'));
 
-        if (config.autoFix === false) {
-            console.log('\x1b[32m%s\x1b[0m', `To fix this, run the command with the --autofix flag or add autofix to true in the configuration file`);
+        if (config.addMissing === false || config.removeRedundant === false) {
+            console.log('\x1b[32m%s\x1b[0m', `To fix this, run the command with the --addMissing flag or -removeRedundant to true in the configuration file`);
             return null;
         } else {
             return messages;
