@@ -3,7 +3,9 @@ export type TSupportedFileTypes = 'json';
 export interface IConfiguration {
     i18nFilesPath: string;
     masterFileName: string;
-    autoFix: boolean;
+    addMissing: boolean;
+    /** Whether to remove redundant translation keys or not */
+    removeRedundant: boolean;
     /** What type of translations there are */
     fileType: TSupportedFileTypes;
     /** Whether to overrwrite original files or not */
